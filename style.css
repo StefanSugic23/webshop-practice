@@ -1,3 +1,6 @@
+* {
+  box-sizing: border-box;
+}
 #header {
     display: flex;
     justify-content: space-between;
@@ -20,5 +23,31 @@
 
 li {
     border: 2px solid black;
+    border-radius: 5px;
+    text-align: center;
+    font-size: large;
     
+}
+
+body {
+  margin: 0;
+  padding: 30px;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: #f5f6f2;
+  color: #1e293b;
+  line-height: 1.6;
+}
+
+#cartList {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 0;    
+}
+
+.liCart{
+    color: red;
+    display: flex;
+    justify-content: space-between;
 }

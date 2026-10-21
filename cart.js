@@ -67,6 +67,7 @@ function render() {
     li.appendChild(minusElement)
     li.appendChild(plusElement)
     li.appendChild(clearElement)
+    li.classList.add("liCart")
 
     plusElement.addEventListener("click", function(){
       item.quantity++;
