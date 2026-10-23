@@ -112,3 +112,16 @@ button:hover {
 .transition {
     transition: 1.1s ease;
 }
+
+#cartMain{
+    display: grid;
+    grid-template-columns: auto;
+}
+
+@media (min-width: 800px) {
+    
+    #products {
+        display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    }
+}
