@@ -18,13 +18,29 @@
 
         <nav id="nav">
             <a href="./index.html">Shop</a>
-            <a href="./cart.html">Cart <p id="cartNumber"></p></a>
+            <a href="./cart.html">Cart <aside id="cartNumber"></aside></a>
         </nav>
 
   </header>
 
     <main id="main">
         <h2>Products</h2>
+
+        <label for="category">Category:</label>
+        <select id="category">
+            <option value="all" selected>All</option>
+            <option value="computer">Computer</option>
+            <option value="phone">Phone</option>
+            <option value="audio">Audio</option>
+            <option value="other">Other</option>
+        </select>
+
+        <label for="priceSelect">Price:</label>
+        <select id="priceSelect">
+            <option value="ascending" selected>Ascending</option>
+            <option value="descending">Descending</option>
+            
+        </select>
         
         <div id="productsDiv">
             <ul id="products"></ul>

@@ -1,6 +1,7 @@
 const cartList = document.querySelector("#cartList");
 const sumElement = document.querySelector("#sum");
 const clearAll = document.querySelector("#clearAll")
+const cartNumber = document.querySelector("#cartNumber")
 
 let cart = [];
 
@@ -75,6 +76,7 @@ function render() {
       item.quantity++;
       render();
       save();
+      updateCart();
     })
 
     minusElement.addEventListener("click", function(){
@@ -86,6 +88,7 @@ function render() {
       }
       render();
      save(); 
+     updateCart();
     })
 
     clearElement.addEventListener("click", function(){
@@ -93,6 +96,7 @@ function render() {
          
           render();
           save();
+          updateCart();
         
     })
 
@@ -104,6 +108,7 @@ function render() {
 
 save();
 render();
+updateCart();
 
 
 function updateSum() {
@@ -120,5 +125,18 @@ clearAll.addEventListener("click", function(){
   console.log("All items removed")
   render();
   save();
+  updateCart();
 })
+
+function updateCart(){
+  let summa = 0;
+  for (let i=0; i<cart.length;i++){
+    summa = cart[i].quantity + summa
+  }
+  cartNumber.textContent= "(" + summa + ")"
+}
+updateCart();
+
+
+
 

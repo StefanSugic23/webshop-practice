@@ -6,6 +6,8 @@ const productsList = document.querySelector("#products")
 const footer = document.querySelector("#footer")
 const myShop = document.querySelector("#myShop")
 const cartNumber = document.querySelector("#cartNumber")
+const categorySelect = document.querySelector("#category")
+const priceSelect = document.querySelector("#priceSelect")
 
 // Product Data
 const products = [
@@ -38,9 +40,13 @@ function save() {
 };
 
 // Drawing the products
-function render() {
+function render(cat) {
   productsList.textContent = "";
   for (let i = 0; i < products.length; i++) {
+
+    if (cat === products[i].category || cat === "all"
+    ) {
+    
 
 
     const li = document.createElement("li")
@@ -83,8 +89,9 @@ function render() {
     cart.push(newProduct);
   }
 
-  render();
+  render(cat);
   save();
+  updateCart();
 });
 
 
@@ -97,13 +104,36 @@ function render() {
     productsList.appendChild(li)
 
     
+  }
+  
 
+  
 
   }
 }
-render();
+render("all");
+
+function updateCart(){
+  let summa = 0;
+  for (let i=0; i<cart.length;i++){
+    summa = cart[i].quantity + summa
+  }
+  cartNumber.textContent= "(" + summa + ")"
+}
+updateCart();
 
 
+categorySelect.addEventListener("change", function(){
+  
+  const choice = categorySelect.value
+console.log(choice)
+render(choice);
 
+
+})
+
+priceSelect.addEventListener("change", function(){
+
+} )
 
 
