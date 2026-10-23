@@ -40,11 +40,23 @@ function save() {
 };
 
 // Drawing the products
-function render(cat) {
-  productsList.textContent = "";
-  for (let i = 0; i < products.length; i++) {
+function render(cat, order) {
 
-    if (cat === products[i].category || cat === "all"
+  let spreadedProducts = [...products] // exact same copy
+
+  if (order === "ascending"){
+    spreadedProducts.sort((a,b) => a.price - b.price)
+  }
+  if (order === "descending"){
+    spreadedProducts.sort((a,b) => b.price-a.price)
+  }
+  
+
+  
+  productsList.textContent = "";
+  for (let i = 0; i < spreadedProducts.length; i++) {
+
+    if (cat === spreadedProducts[i].category || cat === "all"
     ) {
     
 
@@ -55,9 +67,9 @@ function render(cat) {
     const prisElement = document.createElement("p")
     const buttonElement = document.createElement("button")
 
-    emojiElement.textContent = products[i].emoji
-    namnElement.textContent = products[i].name
-    prisElement.textContent = products[i].price + " kr"
+    emojiElement.textContent = spreadedProducts[i].emoji
+    namnElement.textContent = spreadedProducts[i].name
+    prisElement.textContent = spreadedProducts[i].price + " kr"
     buttonElement.textContent = "Add to cart"
     emojiElement.classList.add("emoji")
     buttonElement.classList.add("buttonAdd")
@@ -66,7 +78,7 @@ function render(cat) {
 
       
 
-  const product = products[i];
+  const product = spreadedProducts[i];
 
   let found = false;
 
@@ -75,9 +87,12 @@ function render(cat) {
       item.quantity++;
       found = true;
       break;
+      
+      
     }
   }
 
+  
   if (found === false) {
     const newProduct = {
       name: product.name,
@@ -89,7 +104,8 @@ function render(cat) {
     cart.push(newProduct);
   }
 
-  render(cat);
+
+  render(cat, order);
   save();
   updateCart();
 });
@@ -111,7 +127,9 @@ function render(cat) {
 
   }
 }
-render("all");
+let choice1 = "all"
+let choice2 ="default"
+render("all", "default");
 
 function updateCart(){
   let summa = 0;
@@ -123,17 +141,56 @@ function updateCart(){
 updateCart();
 
 
+
+
+
+
 categorySelect.addEventListener("change", function(){
   
-  const choice = categorySelect.value
-console.log(choice)
-render(choice);
+  choice1 = categorySelect.value
+console.log(choice1)
+
+render(choice1, choice2);
 
 
 })
 
 priceSelect.addEventListener("change", function(){
+  choice2 = priceSelect.value
+  console.log(choice2)
 
-} )
+  render(choice1, choice2)
+})
 
+
+
+//Testing sort()
+/*
+const array = [1,3,2,6,5]
+
+const sorted = array.sort(((a,b) => b-a))
+
+console.log(sorted) // sorted corectly desc
+*/
+
+
+//Testing includes
+/*
+const names = ["stefan", "sstteffann","sugic"]
+const name1 = ["stefan"]
+const name3 =["marco"]
+const name2 = [];
+
+console.log(names.includes(name1[0])); // true
+console.log(names.includes(name3[0])); // true
+console.log(!names.includes(name1[0])) // false
+console.log(!names.includes(name3[0])) // true
+console.log(names.includes(name2))
+console.log(!names.includes(name2))
+console.log(names[0]===name1[0]) // true
+console.log(names[0]!==name1[0]) // false
+console.log(names[0]!==name2[0])
+
+works good!
+*/
 
