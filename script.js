@@ -5,6 +5,7 @@ const productsDiv = document.querySelector("#productsDiv")
 const productsList = document.querySelector("#products")
 const footer = document.querySelector("#footer")
 const myShop = document.querySelector("#myShop")
+const cartNumber = document.querySelector("#cartNumber")
 
 // Product Data
 const products = [
@@ -50,10 +51,14 @@ function render() {
 
     emojiElement.textContent = products[i].emoji
     namnElement.textContent = products[i].name
-    prisElement.textContent = products[i].price
+    prisElement.textContent = products[i].price + " kr"
     buttonElement.textContent = "Add to cart"
+    emojiElement.classList.add("emoji")
+    buttonElement.classList.add("buttonAdd")
 
     buttonElement.addEventListener("click", function () {
+
+      
 
   const product = products[i];
 
@@ -71,7 +76,8 @@ function render() {
     const newProduct = {
       name: product.name,
       price: product.price,
-      quantity: 1
+      quantity: 1,
+      category: product.category
     };
 
     cart.push(newProduct);
@@ -96,6 +102,8 @@ function render() {
   }
 }
 render();
+
+
 
 
 

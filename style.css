@@ -16,7 +16,9 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
-    padding: 0;    
+    padding: 8px;
+    
+       
 }
 
 
@@ -26,6 +28,9 @@ li {
     border-radius: 5px;
     text-align: center;
     font-size: large;
+    background-color: white;
+    
+    
     
 }
 
@@ -33,8 +38,7 @@ body {
   margin: 0;
   padding: 30px;
   font-family: "Segoe UI", Arial, sans-serif;
-  background: #f5f6f2;
-  color: #1e293b;
+  background-color: lightcyan;
   line-height: 1.6;
 }
 
@@ -50,4 +54,35 @@ body {
     color: red;
     display: flex;
     justify-content: space-between;
+}
+
+.emoji{
+    font-size: 50px;
+}
+.buttonAdd {
+    
+    background-color: blue;
+    color: white;
+    border-radius: 8px;
+    padding: 10px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    margin-right: 20px;
+}
+
+button {
+  background-color: blue;
+  color: white;
+  transition: background-color 0.3s ease;
+  border-radius: 8px;
+    
+}
+
+
+button:hover {
+  background-color: green;
+}
+
+.transition {
+    transition: 1.1s ease;
 }

@@ -54,6 +54,7 @@ function render() {
     namnElement.textContent = item.name;
     prisElement.textContent = `${item.price} kr`;
     qtyElement.textContent = item.quantity
+    qtyElement.classList.add("transition")
 
     minusElement.textContent="-"
     plusElement.textContent="+"
@@ -68,6 +69,7 @@ function render() {
     li.appendChild(plusElement)
     li.appendChild(clearElement)
     li.classList.add("liCart")
+    
 
     plusElement.addEventListener("click", function(){
       item.quantity++;
@@ -107,7 +109,7 @@ render();
 function updateSum() {
   let sum = 0;
   for (const item of cart) {
-    sum = item.price + sum;
+    sum = (item.price*item.quantity) + sum;
   };
   return sum; // Moved outside of the for loop 
 }
@@ -119,5 +121,4 @@ clearAll.addEventListener("click", function(){
   render();
   save();
 })
-
 
